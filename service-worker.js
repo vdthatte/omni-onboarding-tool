@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/omni-onboarding-tool/precache-manifest.af79d3428b881e344869e9b444235b7c.js"
+  "/omni-onboarding-tool/precache-manifest.6653e3c5910cb3f9a944a224876c671a.js"
 );
 
 workbox.clientsClaim();
