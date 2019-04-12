@@ -21,7 +21,12 @@ class App extends Component {
 
   getImages(url){
     var that = this;
-    rp(url)
+
+    var options = {
+      uri: 'https://' + 'cors-anywhere.herokuapp.com/' + url 
+    };
+
+    rp(options)
     .then(function(html){
       var div = document.createElement('div');
       div.innerHTML = html;
@@ -33,7 +38,6 @@ class App extends Component {
         if(images[i].src != ""){
           imageDivs.push(images[i].src)
         }
-        
       }
       that.setState({
         imgs : imageDivs
@@ -59,6 +63,47 @@ class App extends Component {
 
 
   componentDidMount(){
+      // var options = {
+      //   uri: 'https://api.upcitemdb.com/prod/v1/lookup',
+      //   method: 'post',
+      //   headers: {
+      //       'User-Agent': 'Request-Promise',
+      //       "Content-Type": "application/json",
+      //       "user_key": "only_for_dev_or_pro",
+      //       "key_type": "3scale",
+
+      //   },
+      //   json: true // Automatically parses the JSON string in the response
+      // };
+    
+      // rp(options)
+      //   .then(function (repos) {
+      //       console.log(repos);
+      //   })
+      //   .catch(function (err) {
+      //     console.log(err)
+      //   });
+
+      var options = {
+        uri: 'https://api.upcitemdb.com/prod/trial/lookup -d "{\"upc\": \"4002293401102\"',
+        method: 'post',
+        headers: {
+            'User-Agent': 'Request-Promise',
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+            "key_type": "3scale",
+
+        },
+        json: true // Automatically parses the JSON string in the response
+      };
+    
+      rp(options)
+        .then(function (repos) {
+            console.log(repos);
+        })
+        .catch(function (err) {
+          console.log(err)
+      });
 
   }
 
